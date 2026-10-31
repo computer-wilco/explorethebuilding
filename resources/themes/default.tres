@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://ctjqieebk24ap"]
+
+[ext_resource type="FontFile" uid="uid://c35fgqhjiejap" path="res://assets/fonts/Quantico-Regular.ttf" id="1_sn1o5"]
+
+[resource]
+default_font = ExtResource("1_sn1o5")
+Button/font_sizes/font_size = 26
