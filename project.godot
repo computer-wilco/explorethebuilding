@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Brak Raar Rondloopspel"
+config/name="Explore The Building"
 run/main_scene="uid://ce1dv03kgqr4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [display]

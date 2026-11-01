@@ -41,10 +41,15 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Material": {
+"floor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://resources/materials/building_material.tres",
+"use_external/fallback_path": "res://resources/materials/building/floor.tres",
 "use_external/path": "uid://bvxtxlwv12y5p"
+},
+"wall/ceiling": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/building/wall.tres",
+"use_external/path": "uid://ctpwwmd48iiit"
 }
 }
 }

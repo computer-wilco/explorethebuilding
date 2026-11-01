@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bvxtxlwv12y5p"]
+
+[ext_resource type="Texture2D" uid="uid://dmfnwxbd2ecos" path="res://assets/textures/building/wood_floor_diff_1k.jpg" id="1_7umt8"]
+[ext_resource type="Texture2D" uid="uid://wqqnrjltgqjf" path="res://assets/textures/building/wood_floor_nor_gl_1k.png" id="2_ncdx3"]
+[ext_resource type="Texture2D" uid="uid://badjdpx8cpnkh" path="res://assets/textures/building/wood_floor_ao_1k.png" id="2_tdj78"]
+[ext_resource type="Texture2D" uid="uid://bb5y5fecpir5d" path="res://assets/textures/building/wood_floor_rough_1k.png" id="3_nmmfd"]
+
+[resource]
+albedo_texture = ExtResource("1_7umt8")
+roughness_texture = ExtResource("3_nmmfd")
+normal_enabled = true
+normal_texture = ExtResource("2_ncdx3")
+ao_enabled = true
+ao_texture = ExtResource("2_tdj78")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true
