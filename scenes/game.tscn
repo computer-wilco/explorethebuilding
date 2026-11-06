@@ -241,7 +241,8 @@ text = "03-11-2026
 ----------
 
 Why are there
-no doors?"
+no doors? Or
+windows?"
 font = ExtResource("6_p57ef")
 font_size = 12
 outline_size = 6
