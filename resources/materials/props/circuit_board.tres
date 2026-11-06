@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6ie5gn3knvu6"]
+
+[ext_resource type="Texture2D" uid="uid://bv6bgii2ih8m2" path="res://assets/textures/props/circuit_board/circuit_board_diff_1k.jpg" id="1_k24cp"]
+[ext_resource type="Texture2D" uid="uid://bjr1uet0jc2rr" path="res://assets/textures/props/circuit_board/circuit_board_ao_1k.png" id="2_wjo4d"]
+[ext_resource type="Texture2D" uid="uid://dsmo2m8px151q" path="res://assets/textures/props/circuit_board/circuit_board_metal_1k.png" id="3_cnwog"]
+[ext_resource type="Texture2D" uid="uid://5b51xkijr88s" path="res://assets/textures/props/circuit_board/circuit_board_nor_gl_1k.png" id="4_x8qlj"]
+[ext_resource type="Texture2D" uid="uid://cug8q7wbk6fwv" path="res://assets/textures/props/circuit_board/circuit_board_rough_1k.png" id="5_3pj3j"]
+
+[resource]
+albedo_texture = ExtResource("1_k24cp")
+metallic = 1.0
+metallic_texture = ExtResource("3_cnwog")
+roughness_texture = ExtResource("5_3pj3j")
+normal_enabled = true
+normal_texture = ExtResource("4_x8qlj")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_wjo4d")

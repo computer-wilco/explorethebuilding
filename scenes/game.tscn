@@ -1,7 +1,22 @@
 [gd_scene format=3 uid="uid://bnhnxayi4yycp"]
 
+[ext_resource type="Script" uid="uid://ba1mfcsbo0grj" path="res://scripts/performance_menu.gd" id="1_u5sy4"]
 [ext_resource type="Script" uid="uid://dxf1al4cxrqc8" path="res://scripts/player.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://ch4pa2yoqy4ku" path="res://assets/models/building.glb" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://23awkmw0sqhc" path="res://assets/models/props/dining_table.glb" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://beqkagqqq0s0v" path="res://assets/models/props/dining_chair.glb" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://d1pijbg6lboq5" path="res://assets/models/props/painted_wooden_bench.glb" id="5_iywne"]
+[ext_resource type="FontFile" uid="uid://c35fgqhjiejap" path="res://assets/fonts/Quantico-Regular.ttf" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bstdr4lbuct3x" path="res://assets/models/props/ceiling_lamp.glb" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://dftwo0avjs05b" path="res://assets/models/props/circuit_board.glb" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cotn3al4vkfox" path="res://assets/models/props/gothic_coffee_table.glb" id="10_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dimlb3md874ia" path="res://assets/models/props/wooden_cabinet.glb" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dekjmwwlck3sa" path="res://assets/models/props/sofa.glb" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bti67y5b117tt" path="res://assets/models/props/dartboard.glb" id="11_kvuet"]
+[ext_resource type="PackedScene" uid="uid://b52somgl2y61n" path="res://assets/models/props/chess_set.glb" id="12_trtic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p57ef"]
+content_margin_right = 5.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -14,43 +29,258 @@ sky_material = SubResource("ProceduralSkyMaterial_8cj0n")
 background_mode = 2
 sky = SubResource("Sky_uwrxv")
 ambient_light_sky_contribution = 0.3
+reflected_light_source = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcqhp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mcqhp"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_s2t7y"]
+size = Vector2(0.5, 0.7)
+
 [node name="Game" type="Node3D" unique_id=1008291273]
+
+[node name="Control" type="Control" parent="." unique_id=703068821 node_paths=PackedStringArray("label", "player")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_u5sy4")
+label = NodePath("Label")
+player = NodePath("../player")
+
+[node name="Label" type="Label" parent="Control" unique_id=864873127]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -770.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_p57ef")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p57ef")
+text = "FPS: 60
+XYZ: 0 0 0"
+horizontal_alignment = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1150655377]
 environment = SubResource("Environment_yqjtg")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=353135859 node_paths=PackedStringArray("camera")]
+[node name="player" type="CharacterBody3D" parent="." unique_id=353135859 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-floor_max_angle = 1.2217305
 script = ExtResource("1_uwrxv")
 camera = NodePath("Camera3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1306884681]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=1306884681]
 shape = SubResource("CapsuleShape3D_mcqhp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1640433844]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1640433844]
 mesh = SubResource("CapsuleMesh_mcqhp")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=185116476]
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=185116476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="building" parent="." unique_id=816074123 instance=ExtResource("2_yqjtg")]
 
 [node name="lights" type="Node3D" parent="." unique_id=1131175852]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="lights" unique_id=225780566]
+[node name="OmniLight3D1" type="OmniLight3D" parent="lights" unique_id=225780566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6.652505)
+omni_range = 6.0
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="lights" unique_id=121438296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.652505)
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="lights" unique_id=1965737525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -6.652505)
+[node name="ceiling_lamp1" parent="lights/OmniLight3D1" unique_id=1349698440 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="lights" unique_id=2044296928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.6525049)
+omni_range = 6.0
+
+[node name="ceiling_lamp2" parent="lights/OmniLight3D2" unique_id=863745644 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights" unique_id=1965737525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -6.5)
+omni_range = 6.0
+
+[node name="ceiling_lamp3" parent="lights/OmniLight3D3" unique_id=184983799 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights" unique_id=121438296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12.652505)
+omni_range = 6.0
+
+[node name="ceiling_lamp4" parent="lights/OmniLight3D4" unique_id=1111677095 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="lights" unique_id=394605305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -6.653)
+omni_range = 6.0
+
+[node name="ceiling_lamp5" parent="lights/OmniLight3D5" unique_id=2140326013 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="lights" unique_id=1815180564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -1.653)
+omni_range = 6.0
+
+[node name="ceiling_lamp6" parent="lights/OmniLight3D6" unique_id=1025675350 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="lights" unique_id=47522322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -12.652505)
+omni_range = 6.0
+
+[node name="ceiling_lamp7" parent="lights/OmniLight3D7" unique_id=698691769 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="lights" unique_id=1915707035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -12.653)
+omni_range = 6.0
+
+[node name="ceiling_lamp8" parent="lights/OmniLight3D8" unique_id=550165068 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="lights" unique_id=1145532835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -1)
+omni_range = 6.0
+
+[node name="ceiling_lamp9" parent="lights/OmniLight3D9" unique_id=1375290428 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="lights" unique_id=1663788435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, -1)
+omni_range = 6.0
+
+[node name="ceiling_lamp10" parent="lights/OmniLight3D10" unique_id=241701621 instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="props" type="Node3D" parent="." unique_id=1582612607]
+
+[node name="dining_room" type="Node3D" parent="props" unique_id=908185147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6.5)
+
+[node name="dining_chair1" parent="props/dining_room" unique_id=2073676460 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.3, 0, -1.5)
+
+[node name="dining_chair2" parent="props/dining_room" unique_id=1540658250 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.5, 0, -1.5)
+
+[node name="dining_chair3" parent="props/dining_room" unique_id=1175735940 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-1.5, 0, 1.3113416e-07, 0, 1.5, 0, -1.3113416e-07, 0, -1.5, -0.5, 0, 1.5)
+
+[node name="dining_chair4" parent="props/dining_room" unique_id=1137413165 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-1.5, 0, 1.3113416e-07, 0, 1.5, 0, -1.3113416e-07, 0, -1.5, 0.3, 0, 1.5)
+
+[node name="dining_chair5" parent="props/dining_room" unique_id=1088157993 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 1.8, 0, 0)
+
+[node name="dining_table" parent="props/dining_room" unique_id=1006290114 instance=ExtResource("3_lnu2h")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.2, 0, 0)
+
+[node name="living_room" type="Node3D" parent="props" unique_id=381352821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -1)
+
+[node name="wooden_cabinet" parent="props/living_room" unique_id=1900593197 instance=ExtResource("10_vtaks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.65, 0, -0.20000005)
+
+[node name="sofa" parent="props/living_room" unique_id=1263183336 instance=ExtResource("11_kvpfn")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 0, 1.1)
+
+[node name="gothic_coffee_table" parent="props/living_room" unique_id=1228555484 instance=ExtResource("10_dinhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010000229, 0, -0.5)
+
+[node name="dartboard1" parent="props/living_room" unique_id=1264743011 instance=ExtResource("11_kvuet")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 2.5, 1.75, -4)
+
+[node name="dartboard2" parent="props/living_room" unique_id=750679477 instance=ExtResource("11_kvuet")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 2.5, 1.75, -2)
+
+[node name="chess_set" parent="props/living_room" unique_id=1939180800 instance=ExtResource("12_trtic")]
+transform = Transform3D(-1.5, 0, 1.3113416e-07, 0, 1.5, 0, -1.3113416e-07, 0, -1.5, 0, 0.525, -0.5)
+
+[node name="painted_wooden_bench" parent="props" unique_id=268532363 instance=ExtResource("5_iywne")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -2.6, 0, -6.5)
+
+[node name="circuit_board1" parent="props/painted_wooden_bench" unique_id=948421922 instance=ExtResource("9_0tnpc")]
+transform = Transform3D(-0.6663732, 0, -0.019777473, 0, 0.6666666, 0, 0.019777473, 0, -0.6663732, 0, 0.21000001, 0)
+
+[node name="circuit_board2" parent="props/painted_wooden_bench" unique_id=1269256801 instance=ExtResource("9_0tnpc")]
+transform = Transform3D(0.5386599, 0, -0.39279753, 0, 0.6666666, 0, 0.39279753, 0, 0.5386599, 0.3499999, 0.21000001, 0)
+
+[node name="circuit_board3" parent="props/painted_wooden_bench" unique_id=1065729683 instance=ExtResource("9_0tnpc")]
+transform = Transform3D(-0.64395046, 5.629594e-08, 0.17254598, -5.8281838e-08, -0.6666665, 0, 0.17254598, -1.5084451e-08, 0.64395046, -0.317, 0.26, 0)
+
+[node name="paper1" type="MeshInstance3D" parent="props/painted_wooden_bench" unique_id=1679251112]
+transform = Transform3D(0.27860248, 0, -0.18300761, 0, 0.33333334, 0, 0.18300761, 0, 0.27860248, 0.4, 0.651, 0)
+mesh = SubResource("PlaneMesh_s2t7y")
+
+[node name="Label3D" type="Label3D" parent="props/painted_wooden_bench/paper1" unique_id=1848004488]
+transform = Transform3D(1.0000001, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.99999994, -4.3711385e-08, 0, 0.01, 0)
+text = "02-11-2026
+21:16
+----------
+
+This building
+is quite strange."
+font = ExtResource("6_p57ef")
+font_size = 12
+outline_size = 6
+autowrap_trim_flags = 0
+
+[node name="paper2" type="MeshInstance3D" parent="props/painted_wooden_bench" unique_id=748114301]
+transform = Transform3D(0.24457668, 0, 0.22648051, 0, 0.33333334, 0, -0.22648051, 0, 0.24457668, 0.1, 0.651, 0)
+mesh = SubResource("PlaneMesh_s2t7y")
+
+[node name="Label3D" type="Label3D" parent="props/painted_wooden_bench/paper2" unique_id=595687256]
+transform = Transform3D(1.0000001, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.99999994, -4.3711385e-08, 0, 0.01, 0)
+text = "03-11-2026
+19:04
+----------
+
+Why are there
+no doors?"
+font = ExtResource("6_p57ef")
+font_size = 12
+outline_size = 6
+autowrap_trim_flags = 0
+
+[node name="paper3" type="MeshInstance3D" parent="props/painted_wooden_bench" unique_id=2066347941]
+transform = Transform3D(0.31719825, 0, 0.10245223, 0, 0.33333334, 0, -0.10245223, 0, 0.31719825, -0.15, 0.651, 0)
+mesh = SubResource("PlaneMesh_s2t7y")
+
+[node name="Label3D" type="Label3D" parent="props/painted_wooden_bench/paper3" unique_id=1617773034]
+transform = Transform3D(1.0000001, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.99999994, -4.3711385e-08, 0, 0.01, 0)
+text = "03-11-2026
+14:56
+----------
+
+Every room
+looks the same
+but they are still
+different. Why?"
+font = ExtResource("6_p57ef")
+font_size = 12
+outline_size = 6
+autowrap_trim_flags = 0
+
+[node name="paper4" type="MeshInstance3D" parent="props/painted_wooden_bench" unique_id=888027208]
+transform = Transform3D(0.32256982, 0, -0.08402314, 0, 0.33333334, 0, 0.08402314, 0, 0.32256982, -0.4, 0.651, 0)
+mesh = SubResource("PlaneMesh_s2t7y")
+
+[node name="Label3D" type="Label3D" parent="props/painted_wooden_bench/paper4" unique_id=843802543]
+transform = Transform3D(1.0000001, 0, 0, 0, -4.3711385e-08, 0.9999999, 0, -0.99999994, -4.3711385e-08, 0, 0.01, 0)
+text = "03-11-2026
+20:24
+----------
+
+There is
+something here.
+I hope nothing is
+gonna happ·\\"
+font = ExtResource("6_p57ef")
+font_size = 11
+outline_size = 6
+autowrap_trim_flags = 0

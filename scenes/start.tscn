@@ -1,7 +1,15 @@
 [gd_scene format=3 uid="uid://ce1dv03kgqr4"]
 
-[ext_resource type="Theme" uid="uid://ctjqieebk24ap" path="res://resources/themes/default.tres" id="1_jaeev"]
 [ext_resource type="Script" uid="uid://dpv5urugurjfc" path="res://scripts/start.gd" id="2_u80x2"]
+[ext_resource type="FontFile" uid="uid://c35fgqhjiejap" path="res://assets/fonts/Quantico-Regular.ttf" id="3_bodal"]
+
+[sub_resource type="Theme" id="Theme_p57ef"]
+default_font = ExtResource("3_bodal")
+Button/font_sizes/font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2t7y"]
+font = ExtResource("3_bodal")
+font_size = 56
 
 [node name="Control" type="Control" unique_id=1013450797]
 layout_mode = 3
@@ -10,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_jaeev")
+theme = SubResource("Theme_p57ef")
 script = ExtResource("2_u80x2")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2044898066]
@@ -39,11 +47,18 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="start" type="Button" parent="VBoxContainer" unique_id=489069571]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Play"
 
 [node name="quit" type="Button" parent="VBoxContainer" unique_id=589888581]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Quit"
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1671077616]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_s2t7y")

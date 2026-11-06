@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6h1isahgbopi"]
+
+[ext_resource type="Texture2D" uid="uid://cxp6gln6psk52" path="res://assets/textures/props/global/coated_pine_diff_1k.jpg" id="1_rp5ns"]
+[ext_resource type="Texture2D" uid="uid://buaj86p5jfw2f" path="res://assets/textures/props/global/coated_pine_rough_1k.png" id="2_mcis1"]
+
+[resource]
+albedo_texture = ExtResource("1_rp5ns")
+metallic_specular = 0.25
+roughness_texture = ExtResource("2_mcis1")
